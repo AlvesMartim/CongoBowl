@@ -1,0 +1,36 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{%block title%} Base {% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><button>CongoBowl</button></li>
+                <li><button><a href="{%url 'produits' %}">Produits </a></button></li>
+                <li><button><a href="{% url 'apropos' %}">A propos</a></button></li>
+                <li><button><a href="{% url 'sign_in' %}">Compte</a></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>Contacts</p>
+        <ul>
+            <li>Snap : congobowl</li>
+        </ul>
+    </footer>
+</body>
+</html>

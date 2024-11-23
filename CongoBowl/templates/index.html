@@ -1,25 +1,9 @@
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>CongoBowl HomePage</title>
-</head>
+{% block title %}CongoBowl HomPage{% endblock %}
 
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><button>CongoBowl</button></li>
-                <li><button><a href="{%url 'produits' %}">Produits </a></button></li>
-                <li><button><a href="{% url 'apropos' %}">A proppos</a></button></li>
-                <li><button><a href="{% url 'sign_in' %}">Compte</a></button></li>
-            </ul>
-        </nav>
-    </header>
+{% block content %}
+    <h1>Bienvenue sur CongoBowl</h1>
+    <p>Odin s'est endormi dans le B -> Il n'a plus de pénave</p>
+{% endblock %}
 
-</body>
-</html>
