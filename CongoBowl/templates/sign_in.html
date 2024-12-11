@@ -9,27 +9,17 @@
 </head>
 <body>
     <div>
-        <form action="POST">
+        <form method="post" action="{% url 'sign_in'%}">
             <fieldset>
-                <label for="last_name">Nom:</label>
-                <input type="text" id="nom" name="nom" required><br>
-
-                <label for="name">Prenom:</label>
-                <input type="text" id="prenom" name="prenom" required><br>
-                
-                <label for="email">Mail:</label>
-                <input type="email" id="mail" name="mail" required><br>
-
-                <label for="username">Nom d'utilisateur:</label>
-                <input type="text" id="pseudo" name="pseudo" required><br>
-                
-                <label for="password">Mot de passe:</label>
-                <input type="password" id="mot_de_passe_hash" name="mot_de_passe_hash" required><br>
-
-                <input type="submit" value="Créer le compte">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">S'inscrire</button>
             </fieldset>
         </form>
+        
+        <p>
+            Vous avez déjà un compte? Cliquez <a href="{% url 'log_in' %}">ici</a>.
+        </p>
     </div>
-
 </body>
 </html>

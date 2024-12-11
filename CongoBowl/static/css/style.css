@@ -20,5 +20,10 @@ body{
 }
 
 footer{
-    /*placer en bas*/
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color : #635748;
+    text-align: center;
 }

@@ -3,7 +3,12 @@
 {% block title %}CongoBowl HomPage{% endblock %}
 
 {% block content %}
-    <h1>Bienvenue sur CongoBowl</h1>
+    {% if pseudo %}
+        <h1>Bienvenue sur CongoBowl {{ pseudo }}!</h1>
+    {%else %}
+        <h1>Bienvenue sur CongoBowl !</h1>
+        <p><i>Veuillez vous inscrire/connecter</i></p>
+    {% endif %}
     <p>Odin s'est endormi dans le B -> Il n'a plus de pénave</p>
 {% endblock %}
 
