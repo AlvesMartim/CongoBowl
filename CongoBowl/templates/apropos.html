@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}A propos{% endblock %}
+
+{% block content %}
+    <h1>A propos de CongoBowl</h1>
+    <p>
+        Nous sommes une fraterie proposant des produits culinaires traditionnels et
+        typiques du Congo. L'effectif culinaire est composé des souers de Odin.
+        L'effectif de livraison est quant à lui d'Odin uniquement.
+    </p>
     
-</body>
-</html>
+    <p>
+        Vous pouvez nous retrouver la plupart du temps sur SnapChat on l'on poste
+        les commandes, les livraisons et ainsi que les réactions des nos clients
+        à nos produits.
+    </p>
+{% endblock %}
