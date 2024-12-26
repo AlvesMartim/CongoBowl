@@ -1,17 +1,15 @@
-from datetime import datetime
-
 from django.shortcuts import render,redirect
-
-from .forms import SignInForm, LogInForm
+from .forms import *
 from .models import *
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.hashers import make_password, check_password
-from django.contrib import messages
+from django.contrib.auth.hashers import make_password, check_password #Gestion MDP
+from django.contrib import messages #Alertes
 
 
 def index(request):
-    pseudo = request.session['utilisateur_pseudo']
-    return render(request, 'index.html',{'pseudo':pseudo})
+    context = {
+        'pseudo' : request.session.get('utilisateur_pseudo',None)
+    }
+    return render(request, 'index.html',context)
 
 def apropos(request):
     return render(request,'apropos.html')
@@ -45,8 +43,13 @@ def log_in(request):
             try:
                 utilisateur = Utilisateur.objects.get(pseudo=pseudo)
                 if check_password(mot_de_passe, utilisateur.mot_de_passe):
+
                     request.session['utilisateur_pseudo'] = utilisateur.pseudo
                     request.session['utilisateur_id'] = utilisateur.id
+                    request.session['is_authenticated'] = True
+                    request.session.set_expiry(3600)  # Session expire après 1 heure
+
+
                     messages.success(request, "Connexion réussie.")
                     return redirect('index')
                 else:
@@ -57,3 +60,8 @@ def log_in(request):
         form = LogInForm()
     return render(request,'log_in.html', {'form':form})
 
+def log_out(request):
+    # Supprime toutes les données de session
+    request.session.flush()
+    messages.success(request, "Vous avez été déconnecté.")
+    return redirect('index')

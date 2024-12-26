@@ -4,7 +4,10 @@
 
 {% block content %}
     {% if pseudo %}
-        <h1>Bienvenue sur CongoBowl {{ pseudo }}!</h1>
+        <h1>Bonjour {{ request.session.utilisateur_pseudo }}</h1>
+        <a href="{% url 'log_out' %}">
+            Déconnexion
+        </a>
     {%else %}
         <h1>Bienvenue sur CongoBowl !</h1>
         <p><i>Veuillez vous inscrire/connecter</i></p>
