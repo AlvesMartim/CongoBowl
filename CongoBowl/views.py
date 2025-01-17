@@ -116,3 +116,7 @@ def ajouter_panier(request, article_id):
 def get_or_create_panier(utilisateur):
     panier, created = Commande.objects.get_or_create_panier(utilisateur)
     return panier
+
+
+
+#oeeeeeeeeeeeee

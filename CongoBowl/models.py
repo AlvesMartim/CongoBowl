@@ -111,3 +111,4 @@ class ArticlesCommandes(models.Model):
         verbose_name = "Article commandé"
         verbose_name_plural = "Articles commandés"
         db_table = "ArticlesCommandes"
+
