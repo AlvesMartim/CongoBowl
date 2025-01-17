@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block content%}
+    {% if pseudo %}
+    {%else %}
+        <p><i>Veuillez vous inscrire/connecter</i></p>
+    {% endif %}
+    <h1> Votre panier </h1>
+    {% if articles_commandes %}
+    <div class="articles-list">
+        {% for article_id in articles_commandes %}
+        <div class="article-item">
+            <h3>{{ item.article_id.titre }}</h3>
+            <p>Quantité : {{ item.quantite }}</p>
+            {% if item.article_id.image %}
+                <img src="{{ item.article_id.image.url }}" alt="Image de {{ item.article_id.titre }}" style="max-width: 200px;">
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>    
+    {%else %}
+    <p> Aucun articles pour le moment</p>   
+    {% endif %}
+
+    <button type="submit"> <a href=""> Procéder au paiment</a></button>
+
+{% endblock %}

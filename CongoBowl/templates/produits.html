@@ -1,0 +1,34 @@
+{%extends 'base.html' %}
+{%load static%}
+{% block title %}Produits et Menu CongoBowl{% endblock %}
+
+{% block content %}
+    {% if pseudo %}
+        <h1>Bienvenue sur CongoBowl {{ pseudo }}!</h1>
+    
+        {# Affichage des articles en BD #}
+        <h2> Nos articles </h2>
+        {% if articles %}
+        <div class="articles-list">
+            {% for article in articles %}
+            <div class="article-item">
+                <h3>{{ article.titre }}</h3>
+                <img src="{% static article.image %}" alt="Image de {{ article.titre }}" style="max-width: 200px;">
+                <form method="post" action="{% url 'ajouter_panier' article.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Ajouter au panier</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        {%else %}
+        <p> Aucun articles pour le moment</p>
+        {% endif %}
+
+    {%else %}
+        <h1>Bienvenue sur les produits de CongoBowl !</h1>
+        <p><i>Veuillez vous inscrire/connecter pour y accéder</i></p>
+    {% endif %}
+
+
+{% endblock %}
